@@ -17,9 +17,7 @@ jobs:
         with:
           java-version: '11'
       - name: Set up ChromeDriver
-        uses: sebastianp/setup-chromedriver@v1
-        with:
-          version: latest
+      uses: sebastianp/gh-action-chromedriver@latest
       - name: Install Maven dependencies
         run: mvn install
       - name: Run Selenium tests
