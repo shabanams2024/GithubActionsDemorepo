@@ -16,10 +16,13 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '11'
-      - name: Set up ChromeDriver
-        uses: actions/setup-chromedriver@v1
+    - uses: actions/checkout@v2
+      - name: Set up Chrome
+        uses: googlechrome/setup-chrome@v2
         with:
-          version: latest
+          chrome-version: latest
+      - name: Set up ChromeDriver
+        uses: actions/setup-chromedriver@v2
       - name: Install Maven dependencies
         run: mvn install
       - name: Run Selenium tests
