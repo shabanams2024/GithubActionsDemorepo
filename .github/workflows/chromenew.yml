@@ -1,0 +1,31 @@
+name: Selenium Java Workflow
+'on':
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  selenium-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+      - uses: actions/checkout@v2
+      - name: Set up Chrome
+        uses: googlechrome/setup-chrome@v2
+        with:
+          chrome-version: latest
+      - name: Set up ChromeDriver
+        uses: actions/setup-chromedriver@v2
+      - name: Run tests
+        run: ''
+      - name: Install Maven dependencies
+        run: mvn install
+      - name: Run Selenium tests
+        run: mvn test
